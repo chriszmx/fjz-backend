@@ -1,12 +1,12 @@
 # from dotenv import load_dotenv
-# import os
+import os
 from fastapi import FastAPI
 from databases import Database
 
 # load_dotenv()
 
-# DATABASE_URL = os.getenv("DATABASE_URL")
-DATABASE_URL = "postgresql://admin:password@localhost:5432/fjz_local_db"
+DATABASE_URL = os.getenv("DATABASE_URL")
+# DATABASE_URL = "postgresql://admin:password@localhost:5432/fjz_local_db"
 
 
 app = FastAPI()

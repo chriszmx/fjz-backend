@@ -1,18 +1,18 @@
-from fastapi import APIRouter, HTTPException, Depends
-from typing import List
-from database import database
-from crud import get_users, create_user
+# from fastapi import APIRouter, HTTPException, Depends
+# from typing import List
+# from database import database
+# from crud import get_users, create_user
 
-router = APIRouter()
+# router = APIRouter()
 
-@router.get("/users", response_model=List[dict])
-async def read_users():
-    return await get_users(database)
+# @router.get("/users", response_model=List[dict])
+# async def read_users():
+#     return await get_users(database)
 
-@router.post("/users")
-async def create_new_user(name: str, email: str):
-    await create_user(database, name, email)
-    return {"name": name, "email": email}
+# @router.post("/users")
+# async def create_new_user(name: str, email: str):
+#     await create_user(database, name, email)
+#     return {"name": name, "email": email}
 
 
 

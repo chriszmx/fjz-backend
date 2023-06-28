@@ -1,26 +1,15 @@
 from fastapi import FastAPI
-from routers import router
-# from database import create_tables, database
+# from routers import router
+
 
 app = FastAPI()
-
-
-# @app.on_event("startup")
-# async def startup():
-#     await database.connect()
-#     await create_tables()
-
-
-# @app.on_event("shutdown")
-# async def shutdown():
-#     await database.disconnect()
 
 
 @app.get('/')
 async def root():
     return {"health check": '✅!'}
 
-app.include_router(router)
+# app.include_router(router)
 
 
 

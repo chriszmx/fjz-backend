@@ -1,12 +1,21 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Integer, String, Column
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import DeclarativeMeta, declarative_base
+from pydantic import BaseModel
 
 Base = declarative_base()
 
 
-class Item(Base):
-    __tablename__ = "items"
+class UserTable(Base):
+    __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    description = Column(String)
+    name = Column(String)
+
+
+class UserBase(BaseModel):
+    name: str
+
+
+class User(UserBase):
+    id: int

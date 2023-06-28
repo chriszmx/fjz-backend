@@ -1,19 +1,19 @@
 from fastapi import FastAPI
 from routers import router
-from database import create_tables, database
+# from database import create_tables, database
 
 app = FastAPI()
 
 
-@app.on_event("startup")
-async def startup():
-    await database.connect()
-    await create_tables()
+# @app.on_event("startup")
+# async def startup():
+#     await database.connect()
+#     await create_tables()
 
 
-@app.on_event("shutdown")
-async def shutdown():
-    await database.disconnect()
+# @app.on_event("shutdown")
+# async def shutdown():
+#     await database.disconnect()
 
 
 @app.get('/')

@@ -9,6 +9,8 @@ DATABASE_URL = os.environ['DATABASE_URL']
 
 database = Database(DATABASE_URL)
 
+database = Database(DATABASE_URL, min_size=1, max_size=10)
+
 metadata = MetaData()
 
 users = Table(

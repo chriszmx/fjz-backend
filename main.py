@@ -1,7 +1,8 @@
 import os
 from fastapi import FastAPI
 from sqlalchemy import create_engine
-from database import database, Base
+from database import database
+from models import Base
 from routers import router
 
 DATABASE_URL = os.getenv("DATABASE_URL")

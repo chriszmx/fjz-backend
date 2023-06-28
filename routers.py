@@ -1,7 +1,7 @@
 from typing import List
 from fastapi import APIRouter, HTTPException
-from .models import UserTable, User, UserBase
-from .database import database
+from models import UserTable, User, UserBase
+from database import database
 
 router = APIRouter()
 

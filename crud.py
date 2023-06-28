@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from . import models
+import models
 
 def get_items(db: Session):
     return db.query(models.Item).all()

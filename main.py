@@ -1,11 +1,12 @@
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
 from fastapi import FastAPI
 from databases import Database
 
-load_dotenv()
+# load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")
+
 
 app = FastAPI()
 database = Database(DATABASE_URL)

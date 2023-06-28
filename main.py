@@ -1,9 +1,9 @@
 import os
 from fastapi import FastAPI
 from sqlalchemy import create_engine
-from database import database
-from models import Base
-from routers import router
+from .models import Base
+from .database import database
+from .routers import router
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
@@ -17,12 +17,12 @@ async def startup():
     engine = create_engine(DATABASE_URL)
     Base.metadata.create_all(engine)
 
-
 @app.on_event("shutdown")
 async def shutdown():
     await database.disconnect()
 
 app.include_router(router)
+
 
 
 

@@ -25,3 +25,9 @@ async def shutdown():
 @app.get('/')
 async def root():
     return {"message": "Hello, world!"}
+
+@app.get("/users")
+async def read_users():
+    query = "SELECT * FROM users"
+    results = await database.fetch_all(query)
+    return {"users": results}

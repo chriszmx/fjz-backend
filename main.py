@@ -1,31 +1,28 @@
-from fastapi import FastAPI, Depends
-from sqlalchemy.orm import Session
-from . import models, crud, database
+# from dotenv import load_dotenv
+# import os
+from fastapi import FastAPI
+from databases import Database
+
+# load_dotenv()
+
+# DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = "postgresql://admin:password@localhost:5432/fjz_local_db"
+
 
 app = FastAPI()
-models.Base.metadata.create_all(bind=database.engine)
+database = Database(DATABASE_URL)
 
 
-def get_db():
-    db = database.SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+@app.on_event("startup")
+async def startup():
+    await database.connect()
 
 
-@app.get("/")
-def root():
-    return {"message": "Hello, world!"}
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
 
 
-@app.get("/items")
-def read_items(db: Session = Depends(get_db)):
-    items = crud.get_items(db)
-    return {"items": items}
-
-
-@app.post("/items")
-def create_item(name: str, description: str, db: Session = Depends(get_db)):
-    item = crud.create_item(db, name, description)
-    return {"item": item}
+@app.get('/')
+async def root():
+    return {"message": 'Hello, world!'}

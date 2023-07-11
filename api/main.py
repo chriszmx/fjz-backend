@@ -1,13 +1,15 @@
 from fastapi import FastAPI
+from routers import accounts
 # from routers import router
 
 
 app = FastAPI()
+app.include_router(accounts.router)
 
 
-@app.get('/')
-async def root():
-    return {"health check": '✅!'}
+# @app.get('/')
+# async def root():
+#     return {"health check": '✅!'}
 
 # app.include_router(router)
 

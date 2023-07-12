@@ -7,7 +7,6 @@ services:
       DATABASE_URL: postgresql://fjzllc:fjzapts@db/fjz-data
       WAIT_HOSTS: db:5432
       PORT: 8000
-      SIGNING_KEY: e7367659fd83100e97cc3ae5afc6c92a246f1020ec25cc5e6ca408d911c109ae
     build:
       context: api
       dockerfile: Dockerfile.dev
